@@ -5,14 +5,16 @@ const app = express();
 const path = require('path');
 
 // Configuração do CORS
-app.use(cors({
-    origin: '*',
-    methods: ['POST', 'GET', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
+app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+
+// Servir arquivos estáticos da pasta atual
+app.use(express.static(__dirname));
+
+// Rota principal
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Configuração do transportador de email
 const transporter = nodemailer.createTransport({
