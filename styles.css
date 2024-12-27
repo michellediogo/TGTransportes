@@ -1,0 +1,247 @@
+:root {
+    --primary-color: #ff0000;
+    --secondary-color: #000000;
+    --text-color: #333333;
+    --bg-color: #f5f5f5;
+    --white: #ffffff;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 5rem;
+    --border-radius: 8px;
+    --shadow-default: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+section {
+    padding: var(--spacing-lg) 5%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+header {
+    background-color: var(--secondary-color);
+    padding: var(--spacing-sm) 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+#inicio {
+    background-color: #222; /* Cinza mais claro */
+    ; /* Cinza mais claro */
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    min-height: 80vh;
+    padding: 4rem 0;
+}
+
+#inicio h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+ }
+
+ #inicio p {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-bottom: 3rem;
+ }
+
+#sobre-nos {
+    background-color: #222; /* Cinza mais claro */
+    min-height: 60vh;
+    padding: 6rem 0;
+ 
+}
+
+#sobre-nos h2 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+ }
+ 
+
+#sobre-nos p {
+    color: #ffffff; /* Cor mais escura */
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 900px;
+}
+
+.servicos-section {
+    background-color: #222;
+    color: white;
+    padding: 6rem 0;
+}
+
+
+.red-text {
+    color: #ff0000;
+}
+
+.subtitle {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    line-height: 1.8;
+ }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.service-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.service-label {
+    margin-top: 1.5rem;  /* Adiciona espaço acima do label vermelho */
+    padding: 1.2rem;     /* Aumenta o padding do label */
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+}
+
+.service-content {
+    padding: 2rem 1rem;  /* Aumenta o padding vertical */
+    color: white;
+    min-height: 100px;  /* Garante altura mínima */
+    display: flex;
+    align-items: center;
+}
+
+#contato {
+    background-color: black;
+    color: white;
+    padding: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: white;
+    color: black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.contact-form button {
+    background: #ff0000;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: darkred;
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.contact-info p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .service-item,
+    .service-item:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .service-item img {
+        width: 100%;
+    }
+
+    .nav-links {
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 3rem;
+    }
+
+    .nav-links {
+        font-size: 0.9rem;
+    }
+}

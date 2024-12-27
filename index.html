@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TG Transportes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/logo-tg.png" alt="Logo TG Transportes">
+            </div>
+            <div class="nav-links">
+                <a href="#inicio">Início</a>
+                <a href="#sobre-nos">Sobre Nós</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <div class="container">
+            <h1>Transporte de Excelência</h1>
+            <p>A TG Transportes é sua parceira estratégica em logística, oferecendo soluções completas e personalizadas para o transporte de cargas.</p>
+        </div>
+    </section>
+
+    <section id="sobre-nos">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>Somos uma empresa especializada em transportes, com anos de experiência no mercado. Nossa missão é oferecer soluções logísticas eficientes e seguras para nossos clientes.</p>
+            <p>Com uma frota moderna e profissionais qualificados, garantimos a qualidade e pontualidade em todas as entregas.</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="servicos-section">
+        <div class="container">
+            <h2>TRANSPORTES <span class="red-text">ESPECIALIZADOS</span></h2>
+            <p class="subtitle">Soluções especializadas em transporte rodoviário</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="img/Transporte-Refrigerado7.png" alt="Refrigerado">
+                    <div class="service-label">TRANSPORTE REFRIGERADO</div>
+                    <div class="service-content">
+                        <p>Controle total de temperatura para cargas que exigem refrigeração</p>
+                    </div>
+                </div>
+     
+                <div class="service-card">
+                    <img src="img/Transporte-Seco.jpg" alt="Carga Seca">
+                    <div class="service-label">TRANSPORTE SECO</div>
+                    <div class="service-content">
+                        <p>Transporte seguro para cargas secas em geral</p>
+                    </div>
+                </div>
+     
+                <div class="service-card">
+                    <img src="img/Transporte-Especial.png" alt="Especializado">
+                    <div class="service-label">CARGAS ESPECIAIS</div>
+                    <div class="service-content">
+                        <p>Soluções para transportes que exigem cuidados específicos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> Email: gilmar@tmgtransporte.com.br</p>
+                <p><i class="fas fa-phone"></i> WhatsApp: (11) 91367-9229</p>
+            </div>
+    
+            <form id="formulario-contato" class="contact-form">
+                <input type="text" name="nome" placeholder="Nome" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="mensagem" placeholder="Mensagem" rows="5" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+            <div id="mensagem-status"></div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('formulario-contato').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const statusDiv = document.getElementById('mensagem-status');
+            
+            try {
+                const response = await fetch('http://localhost:5000/enviar-contato', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: form.nome.value,
+                        email: form.email.value,
+                        mensagem: form.mensagem.value
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.status === 'success') {
+                    statusDiv.innerHTML = '<p style="color: green;">Mensagem enviada!</p>';
+                    form.reset();
+                } else {
+                    statusDiv.innerHTML = '<p style="color: red;">Erro ao enviar. Tente novamente.</p>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<p style="color: red;">Erro de conexão. Tente novamente.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
