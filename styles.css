@@ -332,10 +332,6 @@ nav {
     #inicio {
         padding-top: 120px;
     }
-    
-    #inicio h1 {
-        font-size: 2.8rem;
-    }
 
     .logo img {
         width: 200px;
@@ -358,12 +354,8 @@ nav {
 }
 
 @media (max-width: 480px) {
-    #inicio {
-        padding-top: 100px;
-    }
-
-    #inicio h1 {
-        font-size: 2.2rem;
+    .nav-toggle {
+        display: block;
     }
 
     .nav-links {
