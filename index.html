@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TG Transportes</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -13,6 +13,12 @@
             <div class="logo">
                 <img src="img/logo-tg.png" alt="Logo TG Transportes">
             </div>
+            <!-- Botão do Menu Hamburguer -->
+            <button class="nav-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="#inicio">Início</a>
                 <a href="#sobre-nos">Sobre Nós</a>
@@ -29,6 +35,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section id="sobre-nos">
         <div class="container">
             <h2>Sobre Nós</h2>
@@ -37,6 +45,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <section id="servicos" class="servicos-section">
         <div class="container">
             <h2>TRANSPORTES <span class="red-text">ESPECIALIZADOS</span></h2>
@@ -44,7 +54,7 @@
             
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="img/Transporte-Refrigerado7.png" alt="Refrigerado">
+                    <img src="img/Transporte-Refrigerado7.png" alt="Refrigerado" loading="lazy">
                     <div class="service-label">TRANSPORTE REFRIGERADO</div>
                     <div class="service-content">
                         <p>Controle total de temperatura para cargas que exigem refrigeração</p>
@@ -52,7 +62,7 @@
                 </div>
      
                 <div class="service-card">
-                    <img src="img/Transporte-Seco.jpg" alt="Carga Seca">
+                    <img src="img/Transporte-Seco.jpg" alt="Carga Seca" loading="lazy">
                     <div class="service-label">TRANSPORTE SECO</div>
                     <div class="service-content">
                         <p>Transporte seguro para cargas secas em geral</p>
@@ -60,7 +70,7 @@
                 </div>
      
                 <div class="service-card">
-                    <img src="img/Transporte-Especial.png" alt="Especializado">
+                    <img src="img/Transporte-Especial.png" alt="Especializado" loading="lazy">
                     <div class="service-label">CARGAS ESPECIAIS</div>
                     <div class="service-content">
                         <p>Soluções para transportes que exigem cuidados específicos</p>
@@ -68,7 +78,9 @@
                 </div>
             </div>
         </div>
-     </section>
+    </section>
+
+    <div class="section-divider"></div>
 
     <section id="contato">
         <div class="container">
@@ -89,8 +101,27 @@
         </div>
     </section>
 
+    <!-- Scripts -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Menu Hamburguer
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Formulário de Contato
         const form = document.querySelector('#formulario-contato');
         const errorMessage = document.querySelector('.error-message');
         

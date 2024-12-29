@@ -17,6 +17,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-color);
@@ -55,17 +60,22 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    min-height: 70px;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .logo img {
-    width: 150px;
+    width: 200px;
     height: auto;
+    margin: -15px 0;
 }
 
 .nav-links {
@@ -83,12 +93,29 @@ nav {
     color: var(--primary-color);
 }
 
+/* Menu Hamburguer */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
 #inicio {
-    background-color: #222; /* Cinza mais claro */
-    ; /* Cinza mais claro */
+    background-color: #fcf9f9;
     background-size: cover;
     background-position: center;
-    color: var(--white);
+    color: #1a1919;
     min-height: 80vh;
     padding: 4rem 0;
 }
@@ -97,64 +124,107 @@ nav {
     font-size: 3.5rem;
     margin-bottom: 2rem;
     text-transform: uppercase;
- }
+}
 
- #inicio p {
+#inicio p {
     font-size: 1.8rem;
     line-height: 1.8;
     max-width: 800px;
     margin-bottom: 3rem;
- }
+}
 
 #sobre-nos {
-    background-color: #222; /* Cinza mais claro */
-    min-height: 60vh;
+    background-color: #fcf9f9;
+    min-height: 100vh;
     padding: 6rem 0;
- 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#sobre-nos .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
 }
 
 #sobre-nos h2 {
     font-size: 3.5rem;
     margin-bottom: 3rem;
- }
- 
+    text-align: center;
+}
 
 #sobre-nos p {
-    color: #ffffff; /* Cor mais escura */
+    color: #1a1919;
     font-size: 1.8rem;
     line-height: 1.8;
     margin-bottom: 3rem;
     max-width: 900px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .servicos-section {
-    background-color: #222;
-    color: white;
+    background-color: #fcf9f9;
+    min-height: 100vh;
     padding: 6rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
+.servicos-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.servicos-section h2 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--primary-color);
+}
 
 .red-text {
     color: #ff0000;
 }
 
 .subtitle {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 4rem;
+    color: #1a1919;
+    font-size: 1.8rem;
     line-height: 1.8;
- }
+    margin-bottom: 3rem;
+    max-width: 900px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .service-card {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
+    background-color: var(--white);
+    box-shadow: var(--shadow-default);
 }
 
 .service-card img {
@@ -164,21 +234,23 @@ nav {
 }
 
 .service-label {
-    margin-top: 1.5rem;  /* Adiciona espaço acima do label vermelho */
-    padding: 1.2rem;     /* Aumenta o padding do label */
+    margin-top: 1.5rem;
+    padding: 1.2rem;
     background-color: #ff0000;
     color: white;
     text-align: center;
     font-weight: bold;
-    font-size: 1.2rem;   /* Aumenta o tamanho da fonte */
+    font-size: 1.2rem;
 }
 
 .service-content {
-    padding: 2rem 1rem;  /* Aumenta o padding vertical */
-    color: white;
-    min-height: 100px;  /* Garante altura mínima */
+    padding: 2rem 1rem;
+    color: var(--text-color);
+    min-height: 100px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #contato {
@@ -205,6 +277,7 @@ nav {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
@@ -221,27 +294,122 @@ nav {
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .service-item,
-    .service-item:nth-child(even) {
-        flex-direction: column;
+.section-divider {
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .service-item img {
-        width: 100%;
+    #inicio h1, #sobre-nos h2, .servicos-section h2 {
+        font-size: 2.8rem;
+    }
+
+    #inicio p, #sobre-nos p, .subtitle {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: var(--spacing-sm) 3%;
+    }
+
+    .logo img {
+        width: 160px;
+        margin: -10px 0;
     }
 
     .nav-links {
-        gap: var(--spacing-sm);
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .service-card img {
+        height: 250px;
+    }
+
+    .service-label {
+        font-size: 1rem;
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    :root {
-        --spacing-lg: 3rem;
+    .nav-toggle {
+        display: block;
     }
 
     .nav-links {
-        font-size: 0.9rem;
+        display: none;
+    }
+
+    .logo img {
+        width: 140px;
+        margin: -8px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        background-color: var(--secondary-color);
+        padding: 5rem 2rem;
+        gap: 2rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    #inicio h1, #sobre-nos h2, .servicos-section h2 {
+        font-size: 2.2rem;
+    }
+
+    #inicio p, #sobre-nos p, .subtitle {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .service-card {
+        margin: 0 1rem;
+    }
+
+    .service-card img {
+        height: 200px;
+    }
+
+    .contact-form {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: var(--spacing-md) 3%;
+    }
+
+    /* Estilos para menu hamburguer ativo */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
     }
 }
