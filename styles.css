@@ -166,6 +166,8 @@ nav {
     font-size: 3.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    color: var(--primary-color) !important; /* Garante que a cor vermelha seja mantida */
+
 }
 
 #sobre-nos p {
@@ -354,8 +356,9 @@ nav {
 }
 
 @media (max-width: 480px) {
-    .nav-toggle {
-        display: block;
+    #inicio h1, #sobre-nos h2, .servicos-section h2 {
+        font-size: 2.2rem;
+        color: var(--primary-color); /* Adiciona cor vermelha explicitamente para mobile */
     }
 
     .nav-links {
