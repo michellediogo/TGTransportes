@@ -82,6 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Adicione isso junto com seus outros event listeners
+const logo = document.querySelector('.logo');
+logo.style.cursor = 'pointer'; // Adiciona cursor pointer ao logo
+
+logo.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
     // Scroll suave para links internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
